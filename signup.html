@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inloggningsformulär</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body style="padding-bottom: 100px;">
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="display-4">Registrera dig!</h1>
+            <p class="lead">Fyll i formuläret nedan för att gå vidare.</p>
+        </div>
+
+        <form class="needs-validation" novalidate>
+
+            <!-- Username -->
+            <div class="form-group">
+                <div class="col-md-6 mb-3">
+                    <label for="validationCustomUsername">Username</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroupPrepend">@</span>
+                        </div>
+                        <input type="text" class="form-control" id="validationCustomUsername" placeholder="Username"
+                            aria-describedby="inputGroupPrepend" required>
+                        <div class="invalid-feedback">
+                            Ange ett användarnamn med minst 10 tecken
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+                <div class="col-md-6 mb-3">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        placeholder="Enter email" required>
+                    <div class="invalid-feedback">
+                        Ange en giltig e-postadress
+                    </div>
+                </div>
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+                <div class="col-md-6 mb-3">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"
+                        required>
+                    <div class="invalid-feedback">
+                        Ange ett lösenord med minst 10 tecken
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gender -->
+            <div class="form-group">
+                <div class="col-md-6 mb-3">
+                    <label for="">Ange kön</label><br>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
+                            value="Man" checked>
+                        <label class="form-check-label" for="exampleRadios1">
+                            Man
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2"
+                            value="Kvinna">
+                        <label class="form-check-label" for="exampleRadios2">
+                            Kvinna
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3"
+                            value="Annat">
+                        <label class="form-check-label" for="exampleRadios3">
+                            Annat
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Country -->
+            <div class="form-group">
+                <div class="col-md-6 mb-3">
+                    <label for="">Ange ursprungsland</label>
+                    <select id="countryInput" class="form-control" required>
+                        <option>Sverige</option>
+                        <option>Danmark</option>
+                        <option>Norge</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Bio -->
+            <div class="form-group">
+                <div class="col-md-6 mb-3">
+                    <label for="exampleFormControlTextarea1">Profilsbeskrivning</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
+                    <div class="invalid-feedback">
+                        Ange en beskrivning med minst 2 meningar.
+                    </div>
+                </div>
+            </div>
+
+            <!-- EULA -->
+            <div class="form-check">
+                <div class="col-md-6 mb-3">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" required>
+                    <label class="form-check-label" for="defaultCheck1">
+                        Jag godkänner företag-X EULA
+                    </label>
+                </div>
+            </div>
+
+            <!-- Submit -->
+            <div class="form-check">
+                <button type="submit" class="btn btn-primary col-md-3 md-3">Sign in</button>
+            </div>
+
+        </form>
+
+        <script>
+            (function () {
+                'use strict';
+                window.addEventListener('load', function () {
+                    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                    var forms = document.getElementsByClassName('needs-validation');
+                    // Loop over them and prevent submission
+                    var validation = Array.prototype.filter.call(forms, function (form) {
+                        form.addEventListener('submit', function (event) {
+                            event.preventDefault();
+                            event.stopPropagation();
+
+                            if (formIsValid()) {
+                                window.location.href = "./thanks.html"
+                            }
+
+
+
+                        }, false);
+                    });
+                }, false);
+            })();
+
+            function formIsValid() {
+                let isValid = true;
+                
+                let usernameInput = document.getElementById("validationCustomUsername");
+                let emailInput = document.getElementById("exampleInputEmail1");
+                let passwordInput = document.getElementById("exampleInputPassword1");
+                let genderManInput = document.getElementById("exampleRadios1");
+                let genderKvinnaInput = document.getElementById("exampleRadios2");
+                let genderAnnatInput = document.getElementById("exampleRadios3");
+                let countryInput = document.getElementById("countryInput");
+                let bioInput = document.getElementById("exampleFormControlTextarea1");
+                let eulaInput = document.getElementById("defaultCheck1");
+
+                let bioDotCounter = (bioInput.value.split(".")).length;
+
+                // Username
+                if(usernameInput.value.length > 10) {
+                    // Is valid
+                    usernameInput.classList.remove("is-invalid")
+                    usernameInput.classList.add("is-valid")
+                } else {
+                    // Is invalid
+                    usernameInput.classList.remove("is-valid")
+                    usernameInput.classList.add("is-invalid")
+
+                    isValid = false;
+                }
+
+                // Email
+                if (emailInput.value.includes("@")) {
+                    // Is valid
+                    emailInput.classList.remove("is-invalid")
+                    emailInput.classList.add("is-valid")
+                } else {
+                    // Is invalid
+                    emailInput.classList.remove("is-valid")
+                    emailInput.classList.add("is-invalid")
+
+                    isValid = false;
+                }
+
+                // Password
+                if (passwordInput.value.length > 10) {
+                    // Is valid
+                    passwordInput.classList.remove("is-invalid")
+                    passwordInput.classList.add("is-valid")
+                } else {
+                    // Is invalid
+                    passwordInput.classList.remove("is-valid")
+                    passwordInput.classList.add("is-invalid")
+
+                    isValid = false;
+                }
+
+                // Bio
+                if (bioDotCounter > 2) {
+                    // Is valid
+                    bioInput.classList.remove("is-invalid")
+                    bioInput.classList.add("is-valid")
+                } else {
+                    // Is invalid
+                    bioInput.classList.remove("is-valid")
+                    bioInput.classList.add("is-invalid")
+
+                    isValid = false;
+                }
+
+                // EULA
+                if (eulaInput.checked) {
+                    // Is valid
+                    eulaInput.classList.remove("is-invalid")
+                    eulaInput.classList.add("is-valid")
+                } else {
+                    // Is invalid
+                    eulaInput.classList.remove("is-valid")
+                    eulaInput.classList.add("is-invalid")
+
+                    isValid = false;
+                }
+
+                // Eftersom att select och radio inputs alltid innehåller värden, kommer dem automatiskt bli godkända.
+                countryInput.classList.add("is-valid");
+
+                genderManInput.classList.remove("is-valid")
+                genderKvinnaInput.classList.remove("is-valid")
+                genderAnnatInput.classList.remove("is-valid")
+
+                if(genderManInput.checked) genderManInput.classList.add("is-valid");
+                if(genderKvinnaInput.checked) genderKvinnaInput.classList.add("is-valid");
+                if(genderAnnatInput.checked) genderAnnatInput.classList.add("is-valid");
+
+                return isValid;
+                
+            }
+        </script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    </div>
+</body>
+
+</html>
